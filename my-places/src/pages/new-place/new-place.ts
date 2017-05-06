@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PlacesService } from "../../services/places.service";
 
 /**
  * Generated class for the NewPlace page.
@@ -11,14 +12,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-new-place',
   templateUrl: 'new-place.html',
+  // queries: {
+  //       form: new ViewChild('f')
+  //   }
 })
 export class NewPlace {
+	// form;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(private navCtrl: NavController, 
+				  public navParams: NavParams,
+				  private placesService: PlacesService) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewPlace');
-  }
-
+	onAddPlace(value: {title: string}) {
+		this.placesService.addPlace(value);
+		console.log(this.navCtrl.getViews())
+		this.navCtrl.pop();
+		//this.form.value = "";
+	}
 }

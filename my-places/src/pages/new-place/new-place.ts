@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
+
 import { PlacesService } from "../../services/places.service";
 
 /**
@@ -29,5 +31,17 @@ export class NewPlace {
 		console.log(this.navCtrl.getViews())
 		this.navCtrl.pop();
 		//this.form.value = "";
+	}
+
+	onLocateUser() {
+		Geolocation.getCurrentPosition()
+			.then(
+				(location) => {
+					console.log(location);
+				}
+			)
+			.catch(
+				(error) => console.log('An error ocurrerd!')
+			)
 	}
 }

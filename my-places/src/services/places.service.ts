@@ -27,7 +27,6 @@ export class PlacesService {
 
 		// slicing will create a new copy
 		// return this.places.slice();
-
 	}
 
 }

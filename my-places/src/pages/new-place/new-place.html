@@ -25,12 +25,12 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col>
-				<button ion button block (click)="onLocateUser()">Locate me</button>
+				<button ion-button block (click)="onLocateUser()">Locate me</button>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<p>Your Location: </p>
+				<p>Your Location: {{ location?.coords.latitude | number:'1.0-2'}} / {{ location?.coords.longitude.toFixed(2) }}</p>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

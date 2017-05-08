@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { PlacesService } from "../../services/places.service";
 
@@ -20,10 +20,12 @@ import { PlacesService } from "../../services/places.service";
 })
 export class NewPlace {
 	// form;
+	location: any;
 
 	constructor(private navCtrl: NavController, 
 				  public navParams: NavParams,
-				  private placesService: PlacesService) {
+				  private placesService: PlacesService,
+				  private geolocation: Geolocation) {
 	}
 
 	onAddPlace(value: {title: string}) {
@@ -34,14 +36,22 @@ export class NewPlace {
 	}
 
 	onLocateUser() {
-		Geolocation.getCurrentPosition()
+		let options = {
+		  enableHighAccuracy: false,
+		  timeout: 5000,
+		  maximumAge: 0
+		};
+
+		this.geolocation.getCurrentPosition(options)
 			.then(
 				(location) => {
-					console.log(location);
+					console.log(location.coords.latitude);
+					console.log(location.coords.longitude);
+					this.location = location;
 				}
 			)
 			.catch(
-				(error) => console.log('An error ocurrerd!')
+				(error) => console.log('An error ocurrerd!', error)
 			)
 	}
 }

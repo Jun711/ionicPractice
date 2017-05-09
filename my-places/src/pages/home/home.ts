@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController } from 'ionic-angular';
 import { PlacesService } from "../../services/places.service";
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -9,9 +10,10 @@ import { PlacesService } from "../../services/places.service";
 export class HomePage {
 	places: {title: string}[] = [];
 
-	constructor(public navCtrl: NavController,
-				private placesService: PlacesService) {
-
+	constructor(
+		public navCtrl: NavController,
+		private placesService: PlacesService,
+		private modalCtrl: ModalController) {
 	}
 
 	ionViewWillEnter() {
@@ -26,5 +28,9 @@ export class HomePage {
 
 	onLoadNewPlace() {
 		this.navCtrl.push('NewPlace')
+	}
+
+	onOpenPlace() {
+		this.modalCtrl.create('Place').present();
 	}
 }

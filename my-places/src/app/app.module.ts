@@ -7,15 +7,17 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { PlacesService } from "../services/places.service";
+// import { Place } from '../pages/place/place';
 
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    // HomePage,
+    // Place
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    // HomePage,
+    // Place
   ],
   providers: [
     StatusBar,

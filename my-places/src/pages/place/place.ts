@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the Place page.
@@ -13,13 +13,18 @@ import { IonicPage, ViewController } from 'ionic-angular';
   templateUrl: 'place.html',
 })
 export class Place {
+	lat: number;
+	lng: number;
 
-  constructor(private viewCtrl: ViewController) {
-  }
+  	constructor(private viewCtrl: ViewController,
+  				private navParams: NavParams) {
+  		this.lat = navParams.data.location.lat;
+  		this.lng = navParams.data.location.lng;
+  	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Place');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad Place');
+	}
 
 	onDismiss() {
 		// tell ionic to remove this page from the stack of pages

@@ -20,18 +20,20 @@ import { PlacesService } from "../../services/places.service";
 })
 export class NewPlace {
 	// form;
-	location: any;
+	location;
+	locationCoord: {lat: number, lng: number} = {lat: 0, lng: 0};
 
 	constructor(private navCtrl: NavController, 
 				  public navParams: NavParams,
 				  private placesService: PlacesService,
 				  private geolocation: Geolocation) {
+		//this.location = {lat: 0, lng: 0}
 	}
 
 	onAddPlace(value: {title: string}) {
-		this.placesService.addPlace(value);
-		console.log(this.navCtrl.getViews())
-		this.navCtrl.pop();
+		//this.placesService.addPlace({title: value.title, location: this.location});
+		//console.log(this.navCtrl.getViews())
+		//this.navCtrl.pop();
 		//this.form.value = "";
 	}
 
@@ -44,10 +46,12 @@ export class NewPlace {
 
 		this.geolocation.getCurrentPosition(options)
 			.then(
-				(location) => {
+				(location: any) => {
 					console.log(location.coords.latitude);
 					console.log(location.coords.longitude);
 					this.location = location;
+					this.locationCoord.lat = location.coords.latitude;
+					this.locationCoord.lng = location.coords.longitude;
 				}
 			)
 			.catch(

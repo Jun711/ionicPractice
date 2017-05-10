@@ -21,19 +21,21 @@ import { PlacesService } from "../../services/places.service";
 export class NewPlace {
 	// form;
 	location;
-	locationCoord: {lat: number, lng: number} = {lat: 0, lng: 0};
+	locationCoord: {lat: number, lng: number};
+	// = {lat: 0, lng: 0};
 
 	constructor(private navCtrl: NavController, 
 				  public navParams: NavParams,
 				  private placesService: PlacesService,
 				  private geolocation: Geolocation) {
-		//this.location = {lat: 0, lng: 0}
+		this.locationCoord = {lat: 0, lng: 0}
 	}
 
 	onAddPlace(value: {title: string}) {
-		//this.placesService.addPlace({title: value.title, location: this.location});
-		//console.log(this.navCtrl.getViews())
-		//this.navCtrl.pop();
+		this.placesService.addPlace({title: value.title, location: this.locationCoord});
+		console.log(this.navCtrl.getViews())
+		this.onLocateUser();
+		this.navCtrl.pop();
 		//this.form.value = "";
 	}
 

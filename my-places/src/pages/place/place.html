@@ -14,7 +14,8 @@
 
 
 <ion-content padding>
-	<sebm-google-map [latitude]="lat" [longitude]="lng">
+	<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+		<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
 	</sebm-google-map>
-	<button ion-button block (click)="onDismiss()">DIsmiss</button>
+	<button ion-button block (click)="onDismiss()">Dismiss</button>
 </ion-content>

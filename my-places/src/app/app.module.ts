@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { PlacesService } from "../services/places.service";
 // import { Place } from '../pages/place/place';
 
-import { AgmCoreModule } from 'angular2-google-maps/core';
+// import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -22,10 +22,7 @@ import { HomePage } from '../pages/home/home';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAT5ef9e9-OLWhglM-6U5JxYZu7V4BBN4c'
-    })
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
